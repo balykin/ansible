@@ -4,11 +4,13 @@
   tasks:
   - name: launching ec2
     ec2:
+      aws_access_key: "{{ lookup('env','AWS_ACCESS_KEY_ID') }}"
+      aws_secret_key: "{{ lookup('env','AWS_SECRET_ACCESS_KEY') }}"
       instance_type: t2.micro
       key_name: ansible
-      image: ami-0c46f9f09e3a8c2b5
+      image: ami-e24b7d9d
       region: us-east-1
-      group: launch-wizard-33
+      group: default
       count: 1
       vpc_subnet_id: subnet-d24211fe
       wait: yes
